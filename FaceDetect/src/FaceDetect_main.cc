@@ -2,12 +2,12 @@
  *       @file  FaceDetect_main.cc
  *      @brief  The FaceDetect BarbequeRTRM application
  *
- * Description: to be done...
+ * Description: Adaptation of the opencv sample facedetect.cpp to AEM
  *
- *     @author  Name Surname (nickname), your@email.com
+ *     @author  Salvatore Bova (10499292), salvatore.bova@mail.polimi.it
  *
- *     Company  Your Company
- *   Copyright  Copyright (c) 20XX, Name Surname
+ *     Company  Politecnico Di Milano
+ *   Copyright  Copyright (c) 2020, Salvatore Bova
  *
  * This source code is released for free distribution under the terms of the
  * GNU General Public License as published by the Free Software Foundation.
@@ -78,8 +78,6 @@ std::string recipe;
  */
 pBbqueEXC_t pexc;
 
-//std::string cascade = string(getenv("HOME")) + "/BOSP/external/partial/opencv/data/haarcascades/haarcascade_frontalface_alt.xml";                        
-//std::string nestedCascade = string(getenv("HOME")) + "/BOSP/external/partial/opencv/data/haarcascades/haarcascade_eye_tree_eyeglasses.xml";
 
 std::string cascade = string(getenv("HOME")) + "/BOSP/contrib/user/FaceDetect/src/data/haarcascades/haarcascade_frontalface_alt.xml";                        
 std::string nestedCascade = string(getenv("HOME")) + "/BOSP/contrib/user/FaceDetect/src/data/haarcascades/haarcascade_eye_tree_eyeglasses.xml";

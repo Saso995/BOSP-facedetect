@@ -2,18 +2,17 @@
  *       @file  FaceDetect_exc.cc
  *      @brief  The FaceDetect BarbequeRTRM application
  *
- * Description: to be done...
+ * Description: Adaptation of the opencv sample facedetect.cpp to AEM
  *
- *     @author  Name Surname (nickname), your@email.com
+ *     @author  Salvatore Bova (10499292), salvatore.bova@mail.polimi.it
  *
- *     Company  Your Company
- *   Copyright  Copyright (c) 20XX, Name Surname
+ *     Company  Politecnico Di Milano
+ *   Copyright  Copyright (c) 2020, Salvatore Bova
  *
  * This source code is released for free distribution under the terms of the
  * GNU General Public License as published by the Free Software Foundation.
  * =====================================================================================
  */
-
 
 #include "FaceDetect_exc.h"
 
@@ -79,7 +78,6 @@ RTLIB_ExitCode_t FaceDetect::onSetup() {
         return RTLIB_ERROR;
     }
 
-
     //open camera
     if( inputName.empty() || (isdigit(inputName[0]) && inputName.size() == 1) )
     {
@@ -115,7 +113,6 @@ RTLIB_ExitCode_t FaceDetect::onConfigure(int8_t awm_id) {
 
 	int32_t proc_quota, proc_nr, mem;
 	GetAssignedResources(PROC_ELEMENT, proc_quota);
-    //modificare scale in base a proc_quota
 	GetAssignedResources(PROC_NR, proc_nr);
 	GetAssignedResources(MEMORY, mem);
 	logger->Notice("MayApp::onConfigure(): "
@@ -134,7 +131,7 @@ RTLIB_ExitCode_t FaceDetect::onRun() {
 
         capture >> frame;
         if( frame.empty() ){
-            logger->Warn("Some bad things appened!");
+            logger->Warn("Something bad with your webcam happened!");
             exit(0);
         }
             
@@ -181,10 +178,12 @@ RTLIB_ExitCode_t FaceDetect::onRun() {
                     }
                 }
                 else{
+                    logger->Error("Could not read %s", inputName.c_str());
                     stopFlag = true;
                 }
             }
             else {
+                logger->Error("Could not read %s", inputName.c_str());
                 stopFlag = true;
             }            
         }
@@ -194,33 +193,37 @@ RTLIB_ExitCode_t FaceDetect::onRun() {
 
 RTLIB_ExitCode_t FaceDetect::onMonitor() {	
 
-    if (detectionTime > 1000 && scale < 2){
-        scale = 2;
-        logger->Warn("Too low, let's increase scale");
-    }
-    else if ((detectionTime > 500 && detectionTime <= 1000) && scale < 1.5){
-        scale = 1.5;
-        logger->Warn("FaceDetect::onMonitor()  :Too low, let's increase scale");
-    }
-    else if ((detectionTime > 300 && detectionTime <= 500) && scale < 1){
-        scale = 1;
-        logger->Warn("FaceDetect::onMonitor()  :Too low, let's increase scale");
-    }
-    else if ((detectionTime > 100 && detectionTime <= 300) && scale < 0.8 ){
-        scale = 0.8;
-        logger->Warn("FaceDetect::onMonitor()  :Too low, let's increase scale");
-    }
-    else if (detectionTime < 100){
-        scale = scale - 0.5;
-        logger->Warn("FaceDetect::onMonitor()  :Too fast, let's improve accuracy decreasing scale");
+    if (stopFlag){
+        logger->Warn("FaceDetect::onMonitor()  : exit");
+        return RTLIB_EXC_WORKLOAD_NONE;
     }
     else{
-        ;
+        if (detectionTime > 1000 && scale < 2){
+            scale = 2;
+            logger->Warn("FaceDetect::onMonitor()  :Too low, let's increase scale");
+        }
+        else if ((detectionTime > 500 && detectionTime <= 1000) && scale < 1.5){
+            scale = 1.5;
+            logger->Warn("FaceDetect::onMonitor()  :Too low, let's increase scale");
+        }
+        else if ((detectionTime > 300 && detectionTime <= 500) && scale < 1){
+            scale = 1;
+            logger->Warn("FaceDetect::onMonitor()  :Too low, let's increase scale");
+        }
+        else if ((detectionTime > 100 && detectionTime <= 300) && scale < 0.8 ){
+            scale = 0.8;
+            logger->Warn("FaceDetect::onMonitor()  :Too low, let's increase scale");
+        }
+        else if (detectionTime < 100){
+            scale = scale - 0.5;
+            logger->Warn("FaceDetect::onMonitor()  :Too fast, let's improve accuracy decreasing scale");
+        }
+        else{
+            ;
+        }
     }
 
  	logger->Warn("FaceDetect::onMonitor()  : exit");
- 	if (stopFlag) 
-        return RTLIB_EXC_WORKLOAD_NONE;
 	return RTLIB_OK;
 }
 
