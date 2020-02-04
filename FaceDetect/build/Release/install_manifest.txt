@@ -1,0 +1,3 @@
+/home/saso/BOSP/out/etc/bbque/recipes/FaceDetect.recipe
+/home/saso/BOSP/out/usr/bin/facedetect
+/home/saso/BOSP/out/etc/bbque/FaceDetect.conf

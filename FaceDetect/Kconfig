@@ -1,0 +1,12 @@
+
+config CONTRIB_FACEDETECT
+  bool "FaceDetect"
+  select CONTRIBS
+  default n
+  ---help---
+  Build the FaceDetect application.
+  
+  Insert here a description of this application.
+
+  If unsure, say No to this option.
+

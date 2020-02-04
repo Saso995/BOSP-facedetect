@@ -1,0 +1,15 @@
+/home/saso/BOSP/contrib/user/FaceDetect/build/Release/CMakeFiles/install/local.dir
+/home/saso/BOSP/contrib/user/FaceDetect/build/Release/CMakeFiles/install/strip.dir
+/home/saso/BOSP/contrib/user/FaceDetect/build/Release/CMakeFiles/doc.dir
+/home/saso/BOSP/contrib/user/FaceDetect/build/Release/CMakeFiles/install.dir
+/home/saso/BOSP/contrib/user/FaceDetect/build/Release/CMakeFiles/doxygen.dir
+/home/saso/BOSP/contrib/user/FaceDetect/build/Release/CMakeFiles/edit_cache.dir
+/home/saso/BOSP/contrib/user/FaceDetect/build/Release/CMakeFiles/rebuild_cache.dir
+/home/saso/BOSP/contrib/user/FaceDetect/build/Release/CMakeFiles/list_install_components.dir
+/home/saso/BOSP/contrib/user/FaceDetect/build/Release/src/CMakeFiles/install/strip.dir
+/home/saso/BOSP/contrib/user/FaceDetect/build/Release/src/CMakeFiles/edit_cache.dir
+/home/saso/BOSP/contrib/user/FaceDetect/build/Release/src/CMakeFiles/facedetect.dir
+/home/saso/BOSP/contrib/user/FaceDetect/build/Release/src/CMakeFiles/list_install_components.dir
+/home/saso/BOSP/contrib/user/FaceDetect/build/Release/src/CMakeFiles/install/local.dir
+/home/saso/BOSP/contrib/user/FaceDetect/build/Release/src/CMakeFiles/rebuild_cache.dir
+/home/saso/BOSP/contrib/user/FaceDetect/build/Release/src/CMakeFiles/install.dir
